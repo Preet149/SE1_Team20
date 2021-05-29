@@ -1,4 +1,4 @@
-package Übung6.Aufgabe3;
+package Exercise6.Aufgabe3;
 
 public class Main {
 
