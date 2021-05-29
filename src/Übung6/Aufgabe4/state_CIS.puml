@@ -1,0 +1,35 @@
+@startuml
+title Zustandsmodell_CIS
+[*] --> User
+User: entry/register and log in
+User --> Member: einloggen
+Member --> Buchung_CIS: booking conference
+Member --> [*]: leave homepage
+state Buchung_CIS{
+
+     [*] --> Konferenzbuchen
+     Konferenzbuchen: do/display conference options
+
+     Konferenzbuchen --> National_conference: [chose national conference]
+     Konferenzbuchen --> CheckVisa: [chose international conference]
+     CheckVisa: do/check Visa
+     CheckVisa --> International_conference:[Valid]
+     CheckVisa --> Visumsperre:[Invalid]
+     Visumsperre --> Member:[benachrichtigen]
+     Visumsperre: do/send message to  Member
+
+     International_conference: do/display payment options
+
+     International_conference --> EasyCard:[pay with creditcard]
+     International_conference --> HypoBank:[pay with debitcard]
+
+     National_conference: do/display payment options
+     National_conference --> EasyCard:[pay with creditcard]
+     National_conference --> HypoBank:[pay with debitcard]
+
+     EasyCard --> Member: receive bill
+     HypoBank --> Member: receive bill
+
+}
+
+@enduml

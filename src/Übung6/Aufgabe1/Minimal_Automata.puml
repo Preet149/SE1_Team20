@@ -1,0 +1,15 @@
+@startuml
+title __Minimierter Automat__
+[*] -right-> ACF
+ACF -> ACF: a
+ACF -> B: b
+ACF -> DGH: b
+B -right-> [*]
+B -> ACF: a
+B -> E: b
+E -> E: b
+E -> E: a
+DGH -> DGH: a
+DGH -> E: b
+DGH -down-> [*]
+@enduml
