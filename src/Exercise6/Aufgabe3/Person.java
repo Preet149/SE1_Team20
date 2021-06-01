@@ -17,39 +17,77 @@ public class Person{
 
     public Person(String input) {
 
-        String temp = ""; //Zwischenspeicher
-        int count=1;
+        String[]strings=input.split(",");
 
-        //Läuft durch den ganzen komplett String durch.
-        for (int i = 0; i < input.length(); i++) {
+       //string[0] "Frau Dr. Eva Müller"
 
-            temp += input.charAt(i);
+        String[]substrings1=strings[0].split(" ");
 
-            if(count==1 && Pattern.matches("(\\bHerr\\b|\\bFrau\\b)",temp)){
+        this.anrede=(Pattern.matches("(\\bFrau\\b|\\bHerr\\b)",substrings1[0]))? substrings1[0]: null;
+        this.titel=(Pattern.matches("[a-zA-Z.]{3,}",substrings1[1]))? substrings1[1]: null;
+        this.vorname=(Pattern.matches("[a-zA-ZÜÄÖüöä]{3,}",substrings1[2]))? substrings1[2]: null;
+        this.nachname=(Pattern.matches("[a-zA-ZÜÄÖüöä]{5,}",substrings1[3]))? substrings1[3]: null;
 
-                count++;
+        //strings[1] "Hochschule Bonn-Rhein-Sieg"
 
-                this.anrede=temp;
+        strings[1]=strings[1].substring(1);
+
+        this.organisation=(Pattern.matches("([a-zA-Z\\-\s]{3,})",strings[1]))?strings[1]: null;
+
+        //strings[2] "Fachbereich Informatik"
+
+        strings[2]=strings[2].substring(1);
+
+        this.abteilung=(Pattern.matches("([a-zA-Z\\-\s]+)",strings[1]))?strings[2]: null;
+
+        //strings[2] "Grantham-Allee 20"
+
+        strings[3]=strings[3].substring(1);
+
+        String[] temp=strings[3].split(" "); //Strasse und Hausnummer separat abspeichern
+        String hausnr="";
+        String strasse="";
+
+        for(int i=0;i<temp.length;i++){
+
+            if(i+1== temp.length){
+
+                hausnr=temp[i];
             }
-            else if(count==2 && Pattern.matches("([a-zA-Z\\.]{3,})",temp)){
+            else{
 
-                count++;
-
-                this.titel=temp;
+                strasse+=temp[i]+" ";
             }
-            else if(count==3 && Pattern.matches("([a-zA-Z]{3,})",temp)){
+        }
 
-                count++;
+        this.straße=(Pattern.matches("([a-zA-Z\\-\s]+)",strasse.substring(0,strasse.length()-1)))?strasse.substring(0,strasse.length()-1): null;
+        this.hausnummer=(Pattern.matches("([0-9]+)",hausnr))?hausnr: null;
 
-                this.vorname=temp;
+        //string[4] "53757 Sankt Augustin"
+
+        String temp_plz="";
+        String temp_stadt="";
+
+        strings[4]=strings[4].substring(1);
+
+        String[]temp1=strings[4].split(" ");
+
+        for(int i=0;i<temp1.length;i++){
+
+            if(i==0){
+
+                temp_plz=temp1[i];
             }
-            else if(count==4 && Pattern.matches("[a-zA-ZÜÄÖüöä]{3,}",temp)) {
+            else{
 
-                count++;
-
-                this.nachname = temp;
+                temp_stadt+=temp1[i]+" ";
             }
+        }
+
+        temp_stadt=temp_stadt.substring(0,temp_stadt.length()-1);
+
+        this.plz=(Pattern.matches("([0-9]{5})",temp_plz))?temp_plz: null;
+        this.stadt=(Pattern.matches("([a-zA-Z\\s]{4,})",temp_stadt))?temp_stadt: null;
 
         }
     }
-}
