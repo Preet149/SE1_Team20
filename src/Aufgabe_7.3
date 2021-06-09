@@ -1,0 +1,28 @@
+Ideen:
+     1.Bei der Berechnung des Umsatz für das Parhaus kann man mithilfe der filter Methode
+       die FirmenKunde wegfiltern, da der Firmenkunde nicht für den Ticket zahlt,
+       und mit der Methode map() und reduce() lässt sich der Gewinn berechnen.
+
+     2. Bei der Angabe der anzahl frei verfügbaren Parkplätzen könnte man die belegte
+        Parkplätze wegfiltern und mit der Methode map() und reduce() lässt sich die anzahl
+        der freie Parkplätze aufsummieren.
+
+
+Demo Code:
+
+      public class Kunde{
+
+           //Der Gewinn pro Tag
+           public double berechneGewinn(List<Kunden> kunde){
+
+                    return kunde.stream().filter(x -> x.istnichtFirmenkunden).map(x ->x.parkdauer*parkgebuehr).reduce(0,Double::sum);
+          }
+
+         //Gibt anzahl freier Parkplätze zurück.
+         public int anzahlfreieparkplaetze(List<Parkplatz>parken){
+
+            //Es werden durch alle Parknummer gestreamt.
+                 return parken.stream().filter(x ->x.istparkfrei).map(() -> count+1).reduce(0,Integer:: count);
+         }
+
+      }

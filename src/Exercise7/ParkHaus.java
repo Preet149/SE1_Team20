@@ -7,7 +7,7 @@ public class ParkHaus {
 
     }
 
-    private int gebühr(){
+    public int gebühr(){
 
         return 2;
     }

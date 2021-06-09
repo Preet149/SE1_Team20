@@ -2,9 +2,10 @@ package Exercise7;
 
 public class Auto {
 
+
+
     //default constructor
     public Auto(){
-
 
     }
 
@@ -17,15 +18,13 @@ public class Auto {
     //Returns a Kunde Object
     public Kunde kunde(){
 
-        Kunde k1=new Kunde();
-
-        return k1;
+        return new Kunde();
 
     }
 
     //Gibt die Parkdauer zurück.
     public int parkdauer(){
 
-        return 4;
+        return 30;
     }
 }
