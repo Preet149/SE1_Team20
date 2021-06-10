@@ -5,31 +5,17 @@ import java.util.List;
 
 public class TestClient {
 
-    private static ZahlenListe digits;
+    public static void main(String[]args) throws IllegalArgumentException {
 
-    static{
+
+        ZahlenListe digits=new ZahlenListe();
 
         //Eine Liste von Zahlen erzeugen.
-        List<Integer>zahlen= Arrays.asList();
+        List<Integer>zahlen= Arrays.asList(33,46,12,78,23,34,99);
 
         //Zahlen zur Liste hinzufuegen.
 
-        zahlen.add(1);
-        zahlen.add(2);
-        zahlen.add(3);
-        zahlen.add(4);
-        zahlen.add(5);
-        zahlen.add(6);
-        zahlen.add(7);
-        zahlen.add(8);
-
-    }
-
-    public static void main(String[]args){
-
-        IteratorIF iter= digits.geradezahligeIterator();
-
-
+        IteratorIF iter= digits.erzeugeIterator(zahlen,"Hallo");
 
         while(iter.hasnext()){
 

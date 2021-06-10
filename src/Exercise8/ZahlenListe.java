@@ -2,26 +2,25 @@ package Exercise8;
 
 import java.util.*;
 
+//Datastructur
 public class ZahlenListe implements DatastructurIF{
 
-    int index=0;
-    List<Integer>zahlen=Arrays.asList();
-
     @Override
-    public IteratorIF geradezahligeIterator() {
+    //Returns a new Iterator
+    public IteratorIF erzeugeIterator(List<Integer>zahlen,String wahl) throws IllegalArgumentException{
 
-        return new EvenIterator(zahlen);
+        if(wahl!="Even" && wahl!="Odd")
+        {
+            throw new IllegalArgumentException();
+        }
+
+        return new ZahlenIterator(zahlen,wahl);
     }
 
-    @Override
-    public IteratorIF ungeradezahligeIterator() {
-        return new OddIterator(zahlen);
+    //Prints the given value
+    void print(int value){
+
+        System.out.print(value+" ");
     }
-
-    public void print(int value){
-
-        System.out.println(value+" ");
-    }
-
 
 }
