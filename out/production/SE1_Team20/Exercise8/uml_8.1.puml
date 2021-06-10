@@ -1,7 +1,7 @@
 @startuml
 interface DatenstructurIF{
 
-   +erzeugeIterator(List<Integer> zahlen,String choice):IteratorIF
+   +erzeugeIterator(List<Integer> zahlen,String wahl):IteratorIF
 }
 
 interface IteratorIF {
@@ -12,7 +12,7 @@ interface IteratorIF {
 
 class ZahlenListe{
 
-     +erzeugeIterator(List<Integer>zahlen,String choice):IteratorIF
+     +erzeugeIterator(List<Integer>zahlen,String wahl):IteratorIF
 
      +print(int value):void
 }
@@ -30,10 +30,18 @@ class ZahlenIterator{
 
 }
 
+class IllegalArgumentException{
+
+  +IllegalArgumentException()
+
+}
+
 DatenstructurIF<|--ZahlenListe
 IteratorIF<|--ZahlenIterator
 
 DatenstructurIF<--Testclient
 Testclient-->IteratorIF
+
+
 
 @enduml
