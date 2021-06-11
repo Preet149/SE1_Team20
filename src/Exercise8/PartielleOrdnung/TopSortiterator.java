@@ -35,11 +35,21 @@ class TopSortIterator implements Iterator<String>{
     @Override
     public String next() throws IllegalArgumentException {
 
-        temp.add(strings[index]);
+        if(index!=0){
+
+            while(temp.contains(strings[index])){
+
+                index++;
+            }
+        }
+
+        temp.add(strings[index]); //Liste
 
         String[]zwischenspeicher=new String[temp.size()];
 
         zwischenspeicher=temp.toArray(zwischenspeicher);
+
+
 
         while(!sort.isWellSorted(zwischenspeicher)){
 
@@ -51,7 +61,8 @@ class TopSortIterator implements Iterator<String>{
 
     @Override
     public boolean hasnext() {
-        return false;
+
+        return index<temp.size();
     }
 
 }
