@@ -1,13 +1,14 @@
-package Exercise8;
+package Exercise8.Zahleniterator;
 
-import java.util.*;
+
+import java.util.List;
 
 //Datastructur
-public class ZahlenListe implements DatastructurIF{
+public class ZahlenListe implements DatastructurIF {
 
     @Override
     //Returns a new Iterator
-    public IteratorIF erzeugeIterator(List<Integer>zahlen,String wahl) throws IllegalArgumentException{
+    public IteratorIF erzeugeIterator(List<Integer>zahlen, String wahl) throws IllegalArgumentException {
 
         if(wahl!="Even" && wahl!="Odd")
         {

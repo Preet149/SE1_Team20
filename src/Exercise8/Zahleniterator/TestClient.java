@@ -1,4 +1,6 @@
-package Exercise8;
+package Exercise8.Zahleniterator;
+
+
 
 import java.util.Arrays;
 import java.util.List;

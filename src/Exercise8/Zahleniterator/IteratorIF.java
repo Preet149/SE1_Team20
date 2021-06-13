@@ -1,4 +1,4 @@
-package Exercise8;
+package Exercise8.Zahleniterator;
 
 interface IteratorIF {
 

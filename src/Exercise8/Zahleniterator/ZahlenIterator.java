@@ -1,16 +1,16 @@
-package Exercise8;
+package Exercise8.Zahleniterator;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class ZahlenIterator implements IteratorIF{
+public class ZahlenIterator implements IteratorIF {
 
       int index=0;
       List<Integer> zahlen= Arrays.asList();
       String wahl;                            //Even or Odd numbers
 
       //Constructor
-      public ZahlenIterator(List<Integer>zahlen,String wahl){
+      public ZahlenIterator(List<Integer>zahlen, String wahl){
 
           this.zahlen=zahlen;
           this.wahl=wahl;
