@@ -39,8 +39,8 @@ class IllegalArgumentException{
 DatenstructurIF<|--ZahlenListe
 IteratorIF<|--ZahlenIterator
 
-DatenstructurIF<--Testclient
-Testclient-->IteratorIF
+DatenstructurIF<-Testclient
+Testclient->IteratorIF
 
 
 
