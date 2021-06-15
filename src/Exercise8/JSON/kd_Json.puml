@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Json{
+
+   +main(String[]args):void
+   +sum(JSONObject obj):JSONObject
+
+}
+
+class TestJson{
+
+  +obj: JSONObject
+  +array1: JSONArray
+  +array2: JSONArray
+  +values1:Integer[]
+  +values2:Integer[]
+
+  +setUp():void
+  +testsum():void
+
+}
+
+Json <-TestJson: <<uses>>
+
+@enduml
