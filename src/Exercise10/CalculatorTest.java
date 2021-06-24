@@ -1,6 +1,7 @@
 package Exercise10;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,6 +15,7 @@ class CalculatorTest {
     IBefehl redo;
 
     @BeforeEach
+    @DisplayName("Creates objects of type Befehlspeicher, Calculator, UndoBefehl und RedoBefehl.")
     void setUp() {
 
         befehl=new Befehlspeicherer();
@@ -27,7 +29,8 @@ class CalculatorTest {
     }
 
     @Test
-    void calculation() {
+    @DisplayName("Checks whether the calculations are done correctly.")
+    void calculation() throws IllegalArgumentException {
 
         assertEquals(2,calc.calculation('+',2));
         assertEquals(10,calc.calculation('*',5));
@@ -37,7 +40,8 @@ class CalculatorTest {
     }
 
     @Test
-    void redoTest() {
+    @DisplayName("Checks whether the redo method works properly.")
+    void redoTest() throws IllegalArgumentException {
 
         assertEquals(2,calc.calculation('+',2));
         assertEquals(10,calc.calculation('*',5));
@@ -61,7 +65,8 @@ class CalculatorTest {
     }
 
     @Test
-    void undoTest() {
+    @DisplayName("Checks whether the undo method works properly.")
+    void undoTest() throws IllegalArgumentException {
 
         assertEquals(2,calc.calculation('+',2));
         assertEquals(10,calc.calculation('*',5));
@@ -77,4 +82,13 @@ class CalculatorTest {
 
 
     }
+
+    @Test
+    @DisplayName("Checks whether an Exception is thrown by giving a wrong operand.")
+    void exceptionTest(){
+
+        assertThrows(IllegalArgumentException.class,()->calc.calculation('%',3));
+    }
+
+
 }
