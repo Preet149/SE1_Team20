@@ -53,25 +53,25 @@ public class Calculator {
 
      public int redo(){
 
-          index++;
-
           switch(characters.get(index)){
 
-               case '+': total-= digits.get(index);
+               case '+': total+= digits.get(index);
                     break;
 
 
-               case '-': total+= digits.get(index);
+               case '-': total-= digits.get(index);
                     break;
 
 
-               case '/': total*= digits.get(index);
+               case '/': total/= digits.get(index);
                     break;
 
 
-               case '*': total/= digits.get(index);
+               case '*': total*= digits.get(index);
                     break;
           }
+
+          index++;
 
           return total;
      }
