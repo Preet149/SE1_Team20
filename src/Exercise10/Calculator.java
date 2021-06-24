@@ -5,102 +5,111 @@ import java.util.List;
 
 public class Calculator {
 
-     int total=0;
-     List<Integer> digits=new ArrayList<>();
-     List<Character>characters=new ArrayList<>();
-     int index=0;
+    int total = 0;
+    List<Integer> digits = new ArrayList<>();
+    List<Character> operations = new ArrayList<>();
+    int index = 0;
 
 
-     public int calculation(char operand, int digit){
+    public int calculation(char operand, int digit)throws IllegalArgumentException {
 
-          index++;
+        index++;
 
-          switch (operand){
+        switch (operand) {
 
-               case '+': total+=digit;
-                         digits.add(digit);
-                         characters.add(operand);
+            case '+':
+                total += digit;
+                digits.add(digit);
+                operations.add(operand);
 
-                         break;
+                break;
 
-               case '-':  total-=digit;
-                          digits.add(digit);
-                          characters.add(operand);
-
-
-                          break;
-
-               case '*':  total*=digit;
-                          digits.add(digit);
-                          characters.add(operand);
-
-                          break;
-
-               case '/':  total/=digit;
-                          digits.add(digit);
-                          characters.add(operand);
-
-                          break;
-
-               default:   break;
-
-          }
-
-          return total;
+            case '-':
+                total -= digit;
+                digits.add(digit);
+                operations.add(operand);
 
 
-     }
+                break;
 
-     public int redo(){
+            case '*':
+                total *= digit;
+                digits.add(digit);
+                operations.add(operand);
 
-          switch(characters.get(index)){
+                break;
 
-               case '+': total+= digits.get(index);
-                    break;
+            case '/':
+                total /= digit;
+                digits.add(digit);
+                operations.add(operand);
 
+                break;
 
-               case '-': total-= digits.get(index);
-                    break;
+            default: throw new IllegalArgumentException();
 
+        };
 
-               case '/': total/= digits.get(index);
-                    break;
-
-
-               case '*': total*= digits.get(index);
-                    break;
-          }
-
-          index++;
-
-          return total;
-     }
-
-     public int undo(){
-
-          index--;
-
-          switch(characters.get(index)){
-
-               case '+': total-= digits.get(index);
-                         break;
+        return total;
 
 
-               case '-': total+= digits.get(index);
-                         break;
+    }
+
+    public int redo() {
+
+        switch (operations.get(index)) {
+
+            case '+':
+                total += digits.get(index);
+                break;
 
 
-               case '/': total*= digits.get(index);
-                         break;
+            case '-':
+                total -= digits.get(index);
+                break;
 
 
-               case '*': total/= digits.get(index);
-                         break;
-          }
+            case '/':
+                total /= digits.get(index);
+                break;
 
-          return total;
-     }
+
+            case '*':
+                total *= digits.get(index);
+                break;
+        }
+
+        index++;
+
+        return total;
+    }
+
+    public int undo() {
+
+        index--;
+
+        switch (operations.get(index)) {
+
+            case '+':
+                total -= digits.get(index);
+                break;
+
+
+            case '-':
+                total += digits.get(index);
+                break;
+
+
+            case '/':
+                total *= digits.get(index);
+                break;
+
+
+            case '*':
+                total /= digits.get(index);
+                break;
+        }
+
+        return total;
+    }
 }
-
-//2+2+3+=7
-//7 4 2
