@@ -12,6 +12,6 @@ public class PaypalBefehl implements IBefehl{
     @Override
     public int fuehreAus() {
 
-        return 0;
+          return 0; // Noch zu Bearbeiten.
     }
 }
