@@ -4,9 +4,9 @@ import java.util.regex.Pattern;
 
 public class Payment {
 
-    private long kontonummer;
-    private String iban;
-    private long blz;
+     long kontonummer;
+     String iban;
+     long blz;
 
     public Payment(int kontonummer,String iban,int blz)throws IllegalArgumentException{
 
